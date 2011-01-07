@@ -1,4 +1,4 @@
-15 Gru 2010
+ï»¿15 Gru 2010
 
 Autorzy:
 ========
@@ -9,10 +9,10 @@ Autorzy:
 Wprowadzenie:
 =============
 
-Niniejszy projekt jest aplikacj¹ stworzon¹ we frameworku Yii (spadkobiercy Prado) PHP.
-Jego dzia³anie mo¿na sprawdziæ pod adresem http://bugtracker.almora.pl/
+Niniejszy projekt jest aplikacjÄ… stworzonÄ… we frameworku Yii (spadkobiercy Prado) PHP.
+Jego dziaÅ‚anie moÅ¼na sprawdziÄ‡ pod adresem [http://bugtracker.almora.pl/](http://bugtracker.almora.pl/)
 
 Cel:
 ====
 
-Celem projektu jest stworzenie aplikacji we frameworku YII. Aplikacja bêdzie prostym bugtrackerem (narzêdziem zg³aszania b³êdów), który przyda mi siê w moich przysz³ych projektach.
+Celem projektu jest stworzenie aplikacji we frameworku YII. Aplikacja bÄ™dzie prostym bugtrackerem (narzÄ™dziem zgÅ‚aszania bÅ‚Ä™dÃ³w), ktÃ³ry przyda mi siÄ™ w moich przyszÅ‚ych projektach.
