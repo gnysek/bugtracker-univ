@@ -45,15 +45,15 @@ if (Yii::app()->getModule('user')->isAdmin()) {
 	</tr>
 </table>
 
+<?php if (count($comm)): ?>
 <h2>Komentarze:</h2>
 <?php
-if (count($comm)) {
 	$i = 0;
 	foreach ($comm as $wpis) {
 		echo $this->renderPartial('_comm', array('model' => $wpis, 'id' => ++$i ));
 	}
-}
 ?>
+<?php endif; ?>
 
 
 <!-- formularz -->
@@ -65,8 +65,8 @@ if (count($comm)) {
 <?php endif; ?>
 
 
-<h3>Logi:</h3>
 <?php if (count($logi)): ?>
+<h3>Logi:</h3>
 <table class="bug-table bug-log">
 <?php 
 foreach ($logi as $log) {
