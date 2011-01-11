@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Bugi <?php echo $model->bug_id; ?></h1>
+<h1>Edytuj <?php echo $model->bug_id; ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

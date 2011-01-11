@@ -21,10 +21,10 @@ class Bugi extends CActiveRecord {
 	const STATUS_NEW = 0;
 	const STATUS_KNOW = 1;
 	const STATUS_PROGRESS = 2;
-	const STATUS_FIXED = 3;
-	const STATUS_CLOSED = 4;
+	const STATUS_FEEDBACK = 3;
+	const STATUS_FIXED = 4;
 	const STATUS_WONT_FIX = 5;
-	const STATUS_FEEDBACK = 6;
+	const STATUS_CLOSED = 6;
 
 	/**
 	 * Returns the static model of the specified AR class.
@@ -142,7 +142,7 @@ class Bugi extends CActiveRecord {
 	}
 
 	public function getTime() {
-		return (!empty($this->bug_time)) ? Yii::app()->getDateFormatter()->formatDateTime($this->bug_last_time,'full','short') : FALSE;
+		return (!empty($this->bug_time)) ? Yii::app()->getDateFormatter()->formatDateTime($this->bug_time,'full','short') : FALSE;
 	}
 
 	public function getLast_Time() {
@@ -178,10 +178,21 @@ class Bugi extends CActiveRecord {
 				$this->bug_status = self::STATUS_NEW;
 			} else {
 				$this->bug_last_time = time();
+				// dodaj log
+				$oldModel = Bugi::model()->findByPk($this->bug_id);
+				if ($this->bug_status != $oldModel->bug_status) {
+					$log = new Log;
+					$log->bug = $this->bug_id;
+					$log->user = Yii::app()->user->id;
+					$log->date = time();
+					$log->log = $oldModel->status . ' => ' . $this->status;
+					$log->save();
+				}
 			}
 			return TRUE;
 		} else
 			return FALSE;
 	}
+	
 
 }

@@ -10,8 +10,8 @@ if (Yii::app()->getModule('user')->isAdmin()) {
 	$this->menu = array(
 		array('label' => 'Wyświetl Błędy', 'url' => array('index')),
 		array('label' => 'Zgłoś Błąd', 'url' => array('create')),
-		array('label' => 'Update Bugi', 'url' => array('update', 'id' => $model->bug_id)),
-		array('label' => 'Delete Bugi', 'url' => '#', 'linkOptions' => array('submit' => array('delete', 'id' => $model->bug_id), 'confirm' => 'Are you sure you want to delete this item?')),
+		array('label' => 'Edytuj', 'url' => array('update', 'id' => $model->bug_id)),
+		array('label' => 'Usuń', 'url' => '#', 'linkOptions' => array('submit' => array('delete', 'id' => $model->bug_id), 'confirm' => 'Are you sure you want to delete this item?')),
 		array('label' => 'Zarządzaj', 'url' => array('admin')),
 	);
 } else {
@@ -41,6 +41,38 @@ if (Yii::app()->getModule('user')->isAdmin()) {
 		<th colspan="4">Opis:</th>
 	</tr>
 	<tr>
-		<td colspan="4"><?php echo $model->bug_text ?></td>
+		<td colspan="4"><tt><?php echo $model->bug_text ?></tt></td>
 	</tr>
 </table>
+
+<h2>Komentarze:</h2>
+<?php
+if (count($comm)) {
+	$i = 0;
+	foreach ($comm as $wpis) {
+		echo $this->renderPartial('_comm', array('model' => $wpis, 'id' => ++$i ));
+	}
+}
+?>
+
+
+<!-- formularz -->
+<?php if ($model->bug_status < Bugi::STATUS_FIXED && !Yii::app()->user->isGuest): ?>
+
+<?php echo $this->renderPartial('_commform', array('model'=>$modelComm)); ?>
+<br/>
+<br/>
+<?php endif; ?>
+
+
+<h3>Logi:</h3>
+<?php if (count($logi)): ?>
+<table class="bug-table bug-log">
+<?php 
+foreach ($logi as $log) {
+	echo $this->renderPartial('_log', array('model'=>$log));
+}
+?>
+</table>
+<?php endif; ?>
+

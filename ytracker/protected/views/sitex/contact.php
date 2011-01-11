@@ -23,7 +23,7 @@ If you have business inquiries or other questions, please fill out the following
 
 <?php $form=$this->beginWidget('CActiveForm'); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Pola oznaczone <span class="required">*</span> są wymagane.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 

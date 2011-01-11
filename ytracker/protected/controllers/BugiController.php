@@ -50,8 +50,35 @@ class BugiController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+		$modelComm = new Comments;
+		
+		if(isset($_POST['Comments']))
+		{
+			$modelComm->attributes=$_POST['Comments'];
+			if($modelComm->save())
+				$this->redirect(array('view','id'=>$id));
+		}
+		
+		
+		$logi = Log::model()->findAll(array(
+				'select' => '*',
+				'condition' => 'bug=:bugID',
+				'params' => array(':bugID' => $id),
+				'order' => 'date DESC',
+		));
+		
+		$comm = Comments::model()->findAll(array(
+				'select' => '*',
+				'condition' => 'bug=:bugID',
+				'params' => array(':bugID' => $id),
+				'order' => 'date ASC',
+		));
+		
+		$this->render('view', array(
+				'model' => $this->loadModel($id),
+				'modelComm' => $modelComm,
+				'logi' => $logi,
+				'comm' => $comm,
 		));
 	}
 
@@ -181,4 +208,5 @@ class BugiController extends Controller
 			Yii::app()->end();
 		}
 	}
+	
 }
