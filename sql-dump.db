@@ -69,3 +69,21 @@ CREATE TABLE `tbl_users` (
 
 INSERT INTO `tbl_users` VALUES(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'webmaster@example.com', '9a24eff8c15a6a141ece27eb6947da0f', 1261146094, 1294358136, 1, 1);
 INSERT INTO `tbl_users` VALUES(2, 'demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 'demo@example.com', '099f825543f7850cc038b90aaff39fac', 1261146096, 1294353748, 0, 1);
+
+CREATE TABLE IF NOT EXISTS `tbl_comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `bug` int(11) NOT NULL,
+  `user` int(11) NOT NULL,
+  `date` int(10) NOT NULL,
+  `text` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=0 ;
+
+CREATE TABLE IF NOT EXISTS `tbl_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `bug` int(11) NOT NULL,
+  `user` int(11) NOT NULL,
+  `date` int(10) NOT NULL,
+  `log` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
