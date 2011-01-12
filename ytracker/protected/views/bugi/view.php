@@ -3,7 +3,7 @@
 <?php
 $this->breadcrumbs=array(
 	'Błędy'=>array('index'),
-	$model->mantis_id,
+	'#' . $model->mantis_id . ' - ' . $model->bug_title,
 );
 
 if (Yii::app()->getModule('user')->isAdmin()) {
